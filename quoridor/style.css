@@ -1,0 +1,230 @@
+/* === Quoridor Board === */
+.quoridor-board {
+  display: grid;
+  gap: 0;
+  border: 3px solid var(--accent-gold-dim);
+  border-radius: 4px;
+  background: #1a1a2e;
+  padding: 2px;
+  width: min(70vmin, 480px);
+  height: min(70vmin, 480px);
+}
+
+.quoridor-cell {
+  background: #2a4a3a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  position: relative;
+  border-radius: 2px;
+}
+
+.quoridor-cell:hover {
+  background: #3a5a4a;
+}
+
+.quoridor-cell.valid-target {
+  background: rgba(230, 168, 23, 0.25);
+  cursor: pointer;
+}
+
+.quoridor-cell.valid-target:hover {
+  background: rgba(230, 168, 23, 0.45);
+}
+
+.quoridor-cell.valid-target::after {
+  content: '';
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background: rgba(230, 168, 23, 0.6);
+}
+
+/* Wall gap cells */
+.quoridor-gap {
+  background: #111;
+  position: relative;
+}
+
+.quoridor-gap-h {
+  cursor: default;
+}
+
+.quoridor-gap-v {
+  cursor: default;
+}
+
+.quoridor-gap-cross {
+  cursor: default;
+}
+
+/* Wall mode hover */
+.quoridor-gap.wall-hover {
+  background: rgba(230, 168, 23, 0.5);
+}
+
+/* Placed walls */
+.quoridor-gap.wall-placed {
+  border-radius: 2px;
+}
+
+.quoridor-gap.wall-placed.wall-p0 {
+  background: #555;
+  box-shadow: 0 0 4px rgba(100, 100, 100, 0.5);
+}
+
+.quoridor-gap.wall-placed.wall-p1 {
+  background: #ddd;
+  box-shadow: 0 0 4px rgba(200, 200, 200, 0.5);
+}
+
+/* Pawns */
+.q-pawn {
+  width: 65%;
+  height: 65%;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.q-pawn.pawn-p0 {
+  background: radial-gradient(circle at 35% 35%, #555, #111);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.q-pawn.pawn-p1 {
+  background: radial-gradient(circle at 35% 35%, #fff, #bbb);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* === Info panel === */
+.quoridor-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 160px;
+}
+
+.quoridor-turn {
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(230, 168, 23, 0.2);
+}
+
+.quoridor-walls-info {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.wall-count-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  color: var(--text-secondary);
+}
+
+.wall-count-row .wall-count-val {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.wall-count-row .wall-pips {
+  display: flex;
+  gap: 3px;
+}
+
+.wall-pip {
+  width: 8px;
+  height: 16px;
+  border-radius: 2px;
+  background: var(--accent-gold-dim);
+}
+
+.wall-pip.used {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mode toggle */
+.mode-toggle {
+  display: flex;
+  gap: 4px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(230, 168, 23, 0.3);
+}
+
+.mode-toggle button {
+  flex: 1;
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.mode-toggle button.active {
+  background: var(--accent-gold);
+  color: var(--bg-dark);
+}
+
+.mode-toggle button:hover:not(.active) {
+  background: rgba(230, 168, 23, 0.15);
+}
+
+.mode-toggle button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Wall orientation toggle */
+.ori-toggle {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.ori-toggle button {
+  padding: 6px 16px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid rgba(230, 168, 23, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.ori-toggle button.active {
+  background: var(--accent-gold);
+  color: var(--bg-dark);
+  border-color: var(--accent-gold);
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .quoridor-board {
+    width: min(90vmin, 360px);
+    height: min(90vmin, 360px);
+  }
+
+  .quoridor-info {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: unset;
+  }
+}

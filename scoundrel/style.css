@@ -1,0 +1,198 @@
+/* === Scoundrel-specific styles === */
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  flex-wrap: wrap;
+}
+
+.status-bar .hp-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.status-bar .hp-section label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.status-bar .hp-bar-container {
+  flex: 1;
+  max-width: 220px;
+}
+
+.weapon-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-width: 140px;
+}
+
+.weapon-display .weapon-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.weapon-display .weapon-info {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.weapon-display .weapon-none {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.weapon-display .weapon-binding {
+  font-size: 0.75rem;
+  color: var(--accent-gold-dim);
+}
+
+.deck-count {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.deck-count span {
+  color: var(--accent-gold);
+  font-size: 1.1rem;
+}
+
+/* Room area */
+.room-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.room-area .room-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.room-cards {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+.room-cards .card {
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, outline-color 0.15s, opacity 0.2s;
+}
+
+.room-cards .card.disabled {
+  cursor: not-allowed;
+}
+
+/* Card type indicators */
+.card-type-tag {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.card-type-tag.monster {
+  color: #e74c3c;
+}
+
+.card-type-tag.weapon {
+  color: #3498db;
+}
+
+.card-type-tag.potion {
+  color: #2ecc71;
+}
+
+/* Actions area */
+.actions-area {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 0;
+  flex-wrap: wrap;
+}
+
+/* Message area */
+.scoundrel-message {
+  text-align: center;
+  padding: 12px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  min-height: 44px;
+  line-height: 1.4;
+}
+
+/* Cards played counter */
+.room-progress {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.room-progress span {
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .status-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .status-bar .hp-section {
+    min-width: unset;
+  }
+
+  .status-bar .hp-bar-container {
+    max-width: 100%;
+  }
+
+  .weapon-display {
+    justify-content: center;
+    min-width: unset;
+  }
+
+  .deck-count {
+    text-align: center;
+  }
+
+  .room-cards {
+    gap: 8px;
+  }
+}

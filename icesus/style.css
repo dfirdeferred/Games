@@ -1,0 +1,425 @@
+/* === Icesus-specific styles === */
+
+/* Icy accent overrides */
+.icesus-accent {
+  --icy-blue: #6ec6ff;
+  --icy-blue-dim: #3a7ca5;
+  --icy-dark: #1a2a3e;
+  --icy-frost: #a8d8ea;
+}
+
+/* === Party Setup - Multi-step flow === */
+.party-setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 20px;
+  text-align: center;
+  padding: 20px;
+}
+
+.party-setup h2 {
+  color: #6ec6ff;
+  font-size: 1.5rem;
+  text-shadow: 0 0 12px rgba(110, 198, 255, 0.3);
+}
+
+.party-setup h3 {
+  color: var(--accent-gold);
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.party-setup p {
+  color: var(--text-secondary);
+  max-width: 550px;
+}
+
+.party-setup .step-indicator {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.party-setup .step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(110, 198, 255, 0.2);
+  border: 1px solid rgba(110, 198, 255, 0.4);
+  transition: all 0.3s;
+}
+
+.party-setup .step-dot.active {
+  background: #6ec6ff;
+  box-shadow: 0 0 8px rgba(110, 198, 255, 0.5);
+}
+
+.party-setup .step-dot.done {
+  background: #3a7ca5;
+}
+
+/* Player count selector */
+.player-count-grid {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.player-count-btn {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 2px solid rgba(110, 198, 255, 0.3);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.player-count-btn:hover {
+  border-color: #6ec6ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(110, 198, 255, 0.2);
+}
+
+.player-count-btn.selected {
+  border-color: #6ec6ff;
+  background: rgba(110, 198, 255, 0.15);
+  color: #6ec6ff;
+}
+
+/* Party size selector */
+.party-size-grid {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.party-size-btn {
+  width: 80px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: 2px solid rgba(110, 198, 255, 0.3);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.party-size-btn span {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.party-size-btn:hover {
+  border-color: #6ec6ff;
+  transform: translateY(-2px);
+}
+
+.party-size-btn.selected {
+  border-color: #6ec6ff;
+  background: rgba(110, 198, 255, 0.15);
+  color: #6ec6ff;
+}
+
+/* Character creation step */
+.char-creation {
+  width: 100%;
+  max-width: 650px;
+}
+
+.char-creation input[type="text"] {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid rgba(110, 198, 255, 0.3);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text-primary);
+  text-align: center;
+  max-width: 250px;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.char-creation input:focus {
+  border-color: #6ec6ff;
+  box-shadow: 0 0 8px rgba(110, 198, 255, 0.2);
+}
+
+/* Guild / Race cards */
+.guild-grid, .race-grid-icesus {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.guild-card, .race-card-icesus {
+  padding: 14px 10px;
+  border: 2px solid rgba(110, 198, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.guild-card:hover, .race-card-icesus:hover {
+  border-color: #6ec6ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(110, 198, 255, 0.15);
+}
+
+.guild-card.selected, .race-card-icesus.selected {
+  border-color: #6ec6ff;
+  background: rgba(110, 198, 255, 0.12);
+}
+
+.guild-card h4, .race-card-icesus h4 {
+  color: #6ec6ff;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.guild-card .guild-role {
+  font-size: 0.7rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.guild-card p, .race-card-icesus p {
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.race-card-icesus .race-passive {
+  font-size: 0.68rem;
+  color: #6ec6ff;
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* Party summary */
+.party-summary {
+  width: 100%;
+  max-width: 600px;
+}
+
+.formation-preview {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.formation-row {
+  flex: 1;
+  max-width: 250px;
+  border: 1px solid rgba(110, 198, 255, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.formation-row h4 {
+  font-size: 0.75rem;
+  color: #6ec6ff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.formation-char {
+  padding: 6px 8px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  background: rgba(110, 198, 255, 0.06);
+  font-size: 0.82rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formation-char .char-name {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.formation-char .char-guild {
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+}
+
+/* === Formation display in sidebar === */
+.formation-display {
+  display: flex;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.formation-display .row-group {
+  flex: 1;
+  border: 1px solid rgba(110, 198, 255, 0.15);
+  border-radius: 6px;
+  padding: 4px 6px;
+}
+
+.formation-display .row-label {
+  font-size: 0.6rem;
+  color: #6ec6ff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.formation-display .row-member {
+  font-size: 0.72rem;
+  padding: 2px 0;
+  color: var(--text-primary);
+}
+
+.formation-display .row-member.dead {
+  color: var(--text-secondary);
+  text-decoration: line-through;
+}
+
+.formation-display .row-member.active {
+  color: #6ec6ff;
+  font-weight: 700;
+}
+
+/* Party member compact in sidebar */
+.party-member-compact {
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.party-member-compact:last-child {
+  border-bottom: none;
+}
+
+.party-member-compact .member-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  margin-bottom: 2px;
+}
+
+.party-member-compact .member-name {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.party-member-compact .member-name.is-active {
+  color: #6ec6ff;
+}
+
+.party-member-compact .member-role {
+  color: var(--text-secondary);
+  font-size: 0.65rem;
+}
+
+.party-member-compact .member-row-tag {
+  font-size: 0.6rem;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(110, 198, 255, 0.12);
+  color: #6ec6ff;
+}
+
+.party-member-compact .mini-hp-bar {
+  height: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.party-member-compact .mini-hp-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+/* Turn indicator */
+.turn-indicator {
+  text-align: center;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  background: rgba(110, 198, 255, 0.1);
+  border: 1px solid rgba(110, 198, 255, 0.25);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: #6ec6ff;
+  font-weight: 600;
+}
+
+/* Pass overlay enhancements */
+.pass-overlay .player-label {
+  font-size: 1.4rem;
+  color: #6ec6ff;
+  margin-bottom: 8px;
+}
+
+/* Crafting action buttons */
+.mud-actions .btn.cat-craft {
+  border-color: #6ec6ff;
+  color: #6ec6ff;
+}
+
+.mud-actions .btn.cat-craft:hover {
+  background: #6ec6ff;
+  color: var(--bg-dark);
+}
+
+/* Icy-themed terminal accents */
+.terminal-line.ice-lore {
+  color: #6ec6ff;
+  font-style: italic;
+}
+
+/* Save/Load buttons */
+.setup-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .guild-grid, .race-grid-icesus {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .formation-preview {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .formation-row {
+    max-width: 100%;
+  }
+}

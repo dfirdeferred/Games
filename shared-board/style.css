@@ -1,0 +1,347 @@
+/* === Board Game Layout === */
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.board-wrapper {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* === Board Grid === */
+.board-grid {
+  display: grid;
+  width: min(70vmin, 480px);
+  height: min(70vmin, 480px);
+  border: 3px solid var(--accent-gold-dim);
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.board-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.15s;
+  aspect-ratio: 1;
+}
+
+.board-cell.light {
+  background: #b58863;
+}
+
+.board-cell.dark {
+  background: #6d4c2a;
+}
+
+.board-cell.uniform {
+  background: #2a6e3f;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+
+.board-cell:hover {
+  filter: brightness(1.15);
+}
+
+.board-cell.selected {
+  outline: 3px solid var(--accent-gold);
+  outline-offset: -3px;
+  z-index: 1;
+}
+
+.board-cell.highlighted,
+.board-cell.valid-move {
+  position: relative;
+}
+
+.board-cell.highlighted::after,
+.board-cell.valid-move::after {
+  content: '';
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background: rgba(230, 168, 23, 0.5);
+}
+
+.board-cell.capture-move::after {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background: transparent;
+  border: 3px solid rgba(230, 168, 23, 0.6);
+}
+
+.board-cell.last-move {
+  background: rgba(230, 168, 23, 0.25) !important;
+}
+
+/* === Pieces === */
+.piece {
+  font-size: min(5.5vmin, 42px);
+  line-height: 1;
+  user-select: none;
+  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.4));
+}
+
+.piece.white {
+  color: #fff;
+  text-shadow: 0 0 3px rgba(0,0,0,0.6);
+}
+
+.piece.black {
+  color: #222;
+}
+
+/* === Discs (Othello) === */
+.disc {
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.disc.black-disc {
+  background: radial-gradient(circle at 35% 35%, #555, #111);
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.disc.white-disc {
+  background: radial-gradient(circle at 35% 35%, #fff, #ccc);
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.disc.preview {
+  opacity: 0.3;
+}
+
+/* === Stones (Hex/Go-style) === */
+.stone {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+}
+
+.stone.red {
+  background: radial-gradient(circle at 35% 35%, #ff6b6b, #c0392b);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.stone.blue {
+  background: radial-gradient(circle at 35% 35%, #74b9ff, #2980b9);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* === Game Info Panel === */
+.game-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 160px;
+}
+
+.turn-indicator {
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(230,168,23,0.2);
+}
+
+.turn-indicator.active-black {
+  color: #ddd;
+}
+
+.turn-indicator.active-white {
+  color: var(--accent-gold);
+}
+
+.score-display {
+  padding: 10px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  color: var(--text-secondary);
+}
+
+.score-row .score-val {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.captured-pieces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  font-size: 1.2rem;
+  min-height: 28px;
+}
+
+/* === Game Controls === */
+.game-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 12px 0;
+}
+
+/* === Setup Screen === */
+.board-setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 20px;
+  text-align: center;
+  padding: 20px;
+}
+
+.board-setup h2 {
+  color: var(--accent-gold);
+  font-size: 1.8rem;
+}
+
+.board-setup h3 {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.setup-subtitle {
+  color: var(--text-secondary);
+  max-width: 400px;
+  font-size: 0.95rem;
+}
+
+.setup-section {
+  margin: 8px 0;
+}
+
+.mode-buttons, .diff-buttons, .color-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.mode-buttons .btn, .diff-buttons .btn, .color-buttons .btn {
+  min-width: 90px;
+}
+
+.mode-btn.selected, .diff-btn.selected, .color-btn.selected {
+  background: var(--accent-gold);
+  color: var(--bg-dark);
+}
+
+.start-btn {
+  margin-top: 12px;
+  padding: 12px 40px !important;
+  font-size: 1.1rem !important;
+}
+
+/* === Game Over === */
+.board-game-over {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 900;
+  animation: fadeIn 0.4s;
+}
+
+.board-game-over .result-box {
+  text-align: center;
+  padding: 40px;
+  background: var(--bg-felt);
+  border: 2px solid var(--accent-gold);
+  border-radius: 16px;
+  max-width: 380px;
+}
+
+.result-box h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.result-box .win { color: var(--accent-gold); }
+.result-box .lose { color: var(--danger); }
+.result-box .draw { color: var(--text-secondary); }
+
+.result-box p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* === Pawn (Breakthrough/Quoridor) === */
+.pawn {
+  width: 55%;
+  height: 55%;
+  border-radius: 50%;
+}
+
+.pawn.black-pawn {
+  background: radial-gradient(circle at 35% 35%, #555, #111);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.pawn.white-pawn {
+  background: radial-gradient(circle at 35% 35%, #fff, #bbb);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* === Status Message === */
+.board-message {
+  text-align: center;
+  padding: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  min-height: 32px;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .board-grid {
+    width: min(90vmin, 360px);
+    height: min(90vmin, 360px);
+  }
+
+  .piece {
+    font-size: min(8vmin, 36px);
+  }
+
+  .board-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .game-info {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: unset;
+  }
+}
