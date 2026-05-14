@@ -1,0 +1,171 @@
+/* === Hex Board Layout === */
+.hex-board-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 20px 10px;
+}
+
+.hex-board {
+  position: relative;
+  /* Size is set dynamically */
+}
+
+.hex-row {
+  display: flex;
+  gap: 3px;
+  margin-top: -12px; /* overlap rows for hex tiling */
+}
+
+.hex-row:first-child {
+  margin-top: 0;
+}
+
+.hex-cell {
+  width: 42px;
+  height: 48px;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #3a3a5c;
+  transition: background-color 0.15s, filter 0.15s;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.hex-cell:hover {
+  filter: brightness(1.3);
+}
+
+.hex-cell.occupied {
+  cursor: default;
+}
+
+.hex-cell.red-stone {
+  background: #c0392b;
+}
+
+.hex-cell.blue-stone {
+  background: #2980b9;
+}
+
+.hex-cell.win-path {
+  animation: winPulse 0.8s ease-in-out infinite alternate;
+}
+
+.hex-cell.red-stone.win-path {
+  background: #e74c3c;
+  box-shadow: 0 0 12px rgba(231, 76, 60, 0.8);
+}
+
+.hex-cell.blue-stone.win-path {
+  background: #3498db;
+  box-shadow: 0 0 12px rgba(52, 152, 219, 0.8);
+}
+
+@keyframes winPulse {
+  from { filter: brightness(1); }
+  to { filter: brightness(1.4); }
+}
+
+/* === Board Border Indicators === */
+.hex-border-top,
+.hex-border-bottom {
+  height: 6px;
+  background: linear-gradient(90deg, transparent 5%, #c0392b 20%, #c0392b 80%, transparent 95%);
+  border-radius: 3px;
+  margin: 4px auto;
+}
+
+.hex-border-left,
+.hex-border-right {
+  position: absolute;
+  width: 6px;
+  top: 10%;
+  bottom: 10%;
+  background: linear-gradient(180deg, transparent 5%, #2980b9 20%, #2980b9 80%, transparent 95%);
+  border-radius: 3px;
+}
+
+.hex-border-left {
+  left: -14px;
+}
+
+.hex-border-right {
+  right: -14px;
+}
+
+/* === Turn and Info === */
+.hex-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hex-turn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(230,168,23,0.2);
+  font-weight: 700;
+}
+
+.hex-turn-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.hex-turn-dot.red { background: #c0392b; }
+.hex-turn-dot.blue { background: #2980b9; }
+
+.hex-swap-btn {
+  animation: swapGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes swapGlow {
+  from { box-shadow: 0 0 4px rgba(230, 168, 23, 0.3); }
+  to { box-shadow: 0 0 12px rgba(230, 168, 23, 0.8); }
+}
+
+/* === Responsive === */
+@media (max-width: 700px) {
+  .hex-cell {
+    width: 30px;
+    height: 34px;
+  }
+
+  .hex-row {
+    gap: 2px;
+    margin-top: -8px;
+  }
+
+  .hex-row:first-child {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .hex-cell {
+    width: 22px;
+    height: 25px;
+  }
+
+  .hex-row {
+    gap: 1px;
+    margin-top: -6px;
+  }
+
+  .hex-row:first-child {
+    margin-top: 0;
+  }
+}
